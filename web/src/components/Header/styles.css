@@ -35,7 +35,7 @@
   margin: 3.2rem auto;
 }
 
-.page-header .header-content strong {
+.page-header .header-content h1 {
   font: 700 3.6rem Archivo;
   line-height: 4.2rem;
   color: var(--color-title-in-primary);
@@ -62,7 +62,7 @@
     align-items: flex-start;
   }
 
-  .page-header .header-content strong {
+  .page-header .header-content h1 {
     max-width: 350px;
   }
 }

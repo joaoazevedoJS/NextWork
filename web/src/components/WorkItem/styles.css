@@ -52,7 +52,7 @@
 .teacher-item footer button {
   width: 20rem;
   height: 5.6rem;
-  background: var(--color-button-email);
+  background: var(--color-red);
   color: var(--color-button-text);
   border: 0;
   border-radius: 0.8rem;
@@ -72,7 +72,7 @@
 }
 
 .teacher-item footer button:hover {
-  background: var(--color-button-email-dark);
+  background: var(--color-red-dark);
 }
 
 .teacher-item footer p strong {

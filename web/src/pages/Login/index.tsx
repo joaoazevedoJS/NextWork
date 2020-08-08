@@ -1,36 +1,47 @@
-import React, { useState } from 'react'
+import React, { useState, FormEvent } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
 import Header from '../../components/Header'
 import Inputs from '../../components/Inputs'
 
 import './styles.css'
 
+import { login } from '../../auth/tokens/token'
+
 function Login() {
-  const [ nome, setNome ] = useState<String>()
+  const history = useHistory()
+
   const [ email, setEmail ] = useState<String>()
   const [ password, setPassword ] = useState<String>()
-  const [ confirmPassword, setConfirmPassword ] = useState<String>()
+
+  function HandleFormSubmit(event: FormEvent) {
+    event.preventDefault()
+
+    const data = {
+      email,
+      password
+    }
+
+    console.log(data)
+
+    login('pdsfjspdfojod')
+
+    const path = localStorage.getItem('path')
+    localStorage.removeItem('path')
+
+    history.push(path || '/')
+  }
 
   return (
     <div id="page-login">
-      <Header title="" />
-      <h1>{nome}</h1>
-
-      <h1>{email}</h1>
+      <Header title="Faça o login para acessar" >
       <main>
-        <form>
-          <Inputs
-            name="user_name"
-            label="Nome"
-            isRequired
-            changeState={setNome}
-          />
-
+        <form onSubmit={HandleFormSubmit}>
           <Inputs
             type="email"
             name="email"
             label="E-mail"
-            isRequired
+            isRequired={{ isLogin: true }}
             changeState={setEmail}
           />
 
@@ -38,20 +49,25 @@ function Login() {
             type="password"
             name="password"
             label="Senha"
-            isRequired
+            isRequired={{ isLogin: true }}
             changeState={setPassword}
           />
 
-          <Inputs
-            type="password"
-            name="ConfirmPassword"
-            label="Confirmar Senha"
-            isRequired changeState={setPassword}
-          />
+          <button type="submit">Entrar</button>
 
-          <button type="submit">Enviar</button>
+          <div className="others-options">
+            <Link to="signup">
+              Criar Conta!
+            </Link>
+
+            <Link to="forgot">
+              Esqueci Minha Senha
+            </Link>
+          </div>
         </form>
       </main>
+      </Header>
+
     </div>
   )
 }

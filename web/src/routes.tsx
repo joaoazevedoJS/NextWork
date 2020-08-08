@@ -14,7 +14,7 @@ function Routes() {
       <Switch>
         <Route path="/" exact component={Landing} />
         <Route path="/login" exact component={Login} />
-        <Route path="/work" exact component={WorkList} />
+        <PrivateRoute path="/work" exact component={WorkList} />
         <PrivateRoute path="/new-work" exact component={WorkForm} />
       </Switch>
     </BrowserRouter>

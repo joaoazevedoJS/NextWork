@@ -1,5 +1,5 @@
 import React from 'react'
-import { FiMail } from 'react-icons/fi'
+// import { GoRocket } from 'react-icons/go'
 
 import './styles.css'
 
@@ -31,8 +31,8 @@ const WorkItem = () => {
         </p>
 
         <button type="button">
-          <FiMail className="mailIcon" />
-          Entrar em contato
+          {/* <GoRocket className="mailIcon" /> */}
+          Fazer uma proposta
         </button>
       </footer>
     </article>

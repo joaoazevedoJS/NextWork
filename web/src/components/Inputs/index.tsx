@@ -7,20 +7,23 @@ interface Props {
   label: string
   type?: string
   name: string
-  isRequired?: boolean
+  isRequired?: {
+    isLogin: boolean
+  }
+
   placehold?: string
   changeState?: React.Dispatch<React.SetStateAction<any>>
   clickEvent?: () => {}
 }
 
 const Inputs: FC<Props> = (props) => {
-  const isPassword = props.type === 'password' ? true : false
+  // const isPassword = props.type === 'password' ? true : false
 
-  const [ typePassword, setTypePassword ] = useState<string>('password')
-  const [ isOccult, setIsOccult ] = useState<boolean>(true)
+  const [typePassword, setTypePassword] = useState<string>('password')
+  const [isOccult, setIsOccult] = useState<boolean>(true)
 
   function OnChangeEvent(event: ChangeEvent<HTMLInputElement>) {
-    if(props.changeState)
+    if (props.changeState)
       return props.changeState(event.target.value)
   }
 
@@ -30,39 +33,29 @@ const Inputs: FC<Props> = (props) => {
   }
 
   return (
-    <>
+    <div className="input-block">
       <label htmlFor={props.name}>
         {props.label}
-        {props.isRequired ? <span className="is-require">*</span> : ''}
+        {props.isRequired?.isLogin ? '' : <span className="is-require">*</span> }
       </label>
 
-      {
-        isPassword === true ?
-          <div className="passwordCamp">
-            <input
-              type={typePassword}
-              id={props.name}
-              name={props.name}
-              required={props.isRequired || false}
-              placeholder={props.placehold}
-              onChange={OnChangeEvent}
-            />
+      <div className={props.type === 'password' ? 'passwordCamp' : ''} >
+        <input
+          type={props.type === 'password' ? typePassword : props.type || 'text'}
+          id={props.name}
+          name={props.name}
+          required={props.isRequired ? true : true}
+          placeholder={props.placehold}
+          onChange={OnChangeEvent}
+        />
 
-            {
-              isOccult ? <BsFillEyeSlashFill onClick={PasswordIsOccult} /> :
-                <BsFillEyeFill onClick={PasswordIsOccult}/>
-            }
-          </div> :
-          <input
-            type={props.type || 'text' }
-            id={props.name}
-            name={props.name}
-            required={props.isRequired || false}
-            placeholder={props.placehold}
-            onChange={OnChangeEvent}
-          />
-      }
-    </>
+        {
+          props.type === "password" ? isOccult ?
+            <BsFillEyeSlashFill onClick={PasswordIsOccult} className="icon-password" /> :
+            <BsFillEyeFill onClick={PasswordIsOccult} className="icon-password" /> : ''
+        }
+      </div>
+    </div>
   )
 }
 

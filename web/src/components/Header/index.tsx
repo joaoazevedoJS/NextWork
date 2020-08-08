@@ -22,7 +22,7 @@ const PageHeader: FC<Props> = ({ title, children }) => {
       </div>
 
       <div className="header-content">
-        <strong>{title}</strong>
+        <h1>{title}</h1>
 
         {children}
       </div>
