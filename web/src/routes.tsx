@@ -1,6 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
+import PrivateRoute from './auth/PrivateRoute.js'
+
+import Login from './pages/Login'
 import Landing from './pages/Landing'
 import WorkList from './pages/WorkList'
 import WorkForm from './pages/WorkForm'
@@ -10,8 +13,9 @@ function Routes() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Landing} />
+        <Route path="/login" exact component={Login} />
         <Route path="/work" exact component={WorkList} />
-        <Route path="/new-work" exact component={WorkForm} />
+        <PrivateRoute path="/new-work" exact component={WorkForm} />
       </Switch>
     </BrowserRouter>
   )

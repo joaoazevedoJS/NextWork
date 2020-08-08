@@ -1,6 +1,6 @@
 import React from 'react'
 
-import PageHeader from '../../components/PageHeader'
+import Header from '../../components/Header'
 import WorkItem from '../../components/WorkItem'
 
 import './styles.css'
@@ -8,7 +8,7 @@ import './styles.css'
 function WorkList() {
   return (
     <div id="page-teacher-list" className="container">
-      <PageHeader
+      <Header
         title="Estes são os trabalhos disponíveis."
       >
         <form id="search-teachers">
@@ -28,7 +28,7 @@ function WorkList() {
             <input type="text" id="price" />
           </div>
         </form>
-      </PageHeader>
+      </Header>
 
       <main>
         <WorkItem />
