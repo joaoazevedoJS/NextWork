@@ -3,33 +3,49 @@
   flex-direction: column;
 
   width: 100%;
-  margin-bottom: 1.4rem;
   position: relative;
+}
+
+.input-block + .input-block,
+.input-block + button {
+  margin-top: 1.4rem !important;
+}
+
+.input-block label {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.input-block label .is-require {
+  font-size: 2.4rem;
+  margin-left: 0.5rem;
+
+  position: absolute;
+  top: -0.7rem;
+
+  color: var(--color-red);
 }
 
 .input-block .passwordCamp {
   position: relative;
+
   display: flex;
   align-items: center;
 }
 
 .input-block .icon-password {
   position: absolute;
+  right: 2rem;
 
-  right: 20px;
   font-size: 2.3rem;
   color: var(--color-primary);
+  transition: color 0.5s;
+  cursor: pointer;
 }
 
-.input-block label {
-  font-size: 1.7rem;
-  margin-bottom: 0.8rem;
-}
-
-.input-block label .is-require {
-  font-size: 2.4rem;
-  margin-left: 0.7rem;
-  color: var(--color-red);
+.input-block .icon-password:hover {
+  color: var(--color-primary-dark);
 }
 
 .input-block div input {
@@ -42,7 +58,6 @@
   padding: 0 1.6rem;
   font: 1.6rem Archivo;
 }
-
 
 .input-block:focus-within::after {
   width: calc(100% -3.2rem);

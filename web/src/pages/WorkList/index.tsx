@@ -1,32 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Header from '../../components/Header'
 import WorkItem from '../../components/WorkItem'
+import Select from '../../components/Select'
 
 import './styles.css'
 
 function WorkList() {
+  const [ techs, setTechs ] = useState('')
+  const [ price, setPrice ] = useState('')
+
   return (
-    <div id="page-teacher-list" className="container">
+    <div id="page-work-list" className="container">
       <Header
         title="Estes são os trabalhos disponíveis."
       >
-        <form id="search-teachers">
-          <div className="input-block">
-            <label htmlFor="profession">Profissão</label>
-            <input type="text" id="profession" />
-          </div>
+        <form id="search-work">
+          <Select
+            label="Tecnologías"
+            name="techs"
+            value={techs}
+            changeState={setTechs}
+            required
+            options={[
+              { label: 'Javascript', value: 'JS' },
+              { label: 'HTML', value: 'HTML' },
+              { label: 'CSS', value: 'CSS' },
+              { label: 'React.js', value: 'React' },
+              { label: 'Node.js', value: 'Node' },
+              { label: 'MySQL', value: 'MySQL' }
+            ]}
+          />
 
-          <div className="input-block">
-            <label htmlFor="project">Projetos</label>
-            <input type="text" id="project" />
-          </div>
+          <Select
+            label="Preço"
+            name="price"
+            changeState={setPrice}
+            required
+            value={price}
+            options={[
+              { label: "Preço Fixo", value: "P/F" },
+              { label: "Por Hora", value: "P/H" }
+            ]}
+          />
 
-          <div className="input-block">
-            {/* Preço Fixo e por hora */}
-            <label htmlFor="price">Preço</label>
-            <input type="text" id="price" />
-          </div>
+          <button type="submit">Buscar</button>
         </form>
       </Header>
 

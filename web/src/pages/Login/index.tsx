@@ -2,7 +2,7 @@ import React, { useState, FormEvent } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 import Header from '../../components/Header'
-import Inputs from '../../components/Inputs'
+import Inputs from '../../components/Input'
 
 import './styles.css'
 
@@ -41,7 +41,7 @@ function Login() {
             type="email"
             name="email"
             label="E-mail"
-            isRequired={{ isLogin: true }}
+            required
             changeState={setEmail}
           />
 
@@ -49,7 +49,7 @@ function Login() {
             type="password"
             name="password"
             label="Senha"
-            isRequired={{ isLogin: true }}
+            required
             changeState={setPassword}
           />
 

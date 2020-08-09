@@ -17,11 +17,6 @@
   color: var(--color-text-in-primary);
 }
 
-#page-login main form .input-block label {
-  color: var(--color-text-in-primary);
-  font-size: 1.8rem;
-}
-
 #page-login main form button {
   margin-top: 0.8rem;
   margin-bottom: 2rem;
@@ -47,7 +42,7 @@
 
 #page-login main form .others-options {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 #page-login main form .others-options a {
@@ -55,6 +50,10 @@
   color: var(--color-text-in-primary);
   text-decoration: none;
   transition: color 0.5s;
+}
+
+#page-login main form .others-options a + a {
+  margin-top: 1rem;
 }
 
 #page-login main form .others-options a:hover,
@@ -80,5 +79,14 @@
 
   #page-login main form {
     margin-right: 0;
+  }
+
+  #page-login main form .others-options {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #page-login main form .others-options a + a {
+    margin-top: 0;
   }
 }
